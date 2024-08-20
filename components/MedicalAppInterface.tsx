@@ -9,6 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
 
 interface ECGInterpretations {
   [key: string]: {
@@ -21,41 +22,134 @@ const ecgInterpretations: ECGInterpretations = {
   'ECG 1': {
     image: '/images/ecg1.jpeg',
     interpretation: `
-      Normal Sinus Rhythm
-      
-      The ECG shows a normal sinus rhythm with a rate of 72 beats per minute. The PR interval is within normal limits at 160ms. The QRS complex duration is normal at 88ms. The QT/QTc intervals are within normal range.
-      
-      There are no significant ST segment or T wave abnormalities noted. The axis is normal. There are no signs of chamber enlargement or hypertrophy.
-      
-      Overall, this appears to be a normal ECG. However, please note that this interpretation is preliminary and should be confirmed by a qualified healthcare professional.
-    `
+
+**Patient Information**
+The patient is a 28-year-old man with no other clinical information provided.
+
+**Technical Quality**
+The ECG is of good quality with all 12 leads visible. There are no significant artifacts affecting interpretation.
+
+**Heart Rate and Rhythm**
+The heart rate is approximately 88 beats per minute (calculated from the R-R interval). The rhythm is regular sinus rhythm.
+
+**Intervals and Axes**
+- PR interval: Normal, approximately 160 ms
+- QRS duration: Normal, approximately 80 ms
+- QT interval: Normal, approximately 360 ms
+- QTc (using Bazett's formula): Normal, approximately 435 ms
+- Cardiac axis: Normal
+
+**Waveform Analysis**
+- P waves: Normal morphology and duration
+- QRS complexes: Normal morphology with appropriate R wave progression across precordial leads
+- ST segments: No significant ST elevation or depression
+- T waves: Upright in most leads, with slight flattening in leads III and aVF
+
+**Specific Findings**
+1. Sinus rhythm with normal rate
+2. Normal intervals (PR, QRS, QT)
+3. Normal axis
+4. No signs of chamber enlargement or hypertrophy
+5. No acute ischemic changes
+6. Slight T wave flattening in leads III and aVF, which may be a normal variant but warrants attention
+
+**Interpretation**
+This ECG demonstrates a normal sinus rhythm without any significant abnormalities. The overall ECG is within normal limits for a 28-year-old male. The slight T wave flattening in leads III and aVF is noted but may be a normal variant. There are no signs of acute coronary syndrome, conduction abnormalities, or other pathological conditions.
+`
   },
   'ECG 2': {
     image: '/images/ecg2.jpeg',
     interpretation: `
-      Atrial Fibrillation
-      
-      The ECG demonstrates atrial fibrillation with an irregular ventricular response. The average ventricular rate is approximately 110 beats per minute. There is an absence of distinct P waves, replaced by fibrillatory waves.
-      
-      The QRS complexes are narrow, measuring 90ms. There are no significant ST segment deviations or T wave abnormalities. The axis appears normal.
-      
-      This ECG is consistent with atrial fibrillation. Further clinical correlation and comparison with previous ECGs is recommended. Consider anticoagulation therapy based on the patient's risk factors.
+
+
+**Patient Information**
+
+The patient is an 83-year-old man with a history of aortic stenosis.
+
+**Technical Quality**
+
+The ECG quality is good. All 12 leads are visible, and there are no significant artifacts that would interfere with interpretation.
+
+**Heart Rate and Rhythm**
+
+The heart rate is approximately 75 beats per minute, calculated using the R-R interval method. The rhythm is irregularly irregular, consistent with atrial fibrillation.
+
+**Intervals and Axes**
+
+- PR interval: Not applicable due to atrial fibrillation
+
+- QRS duration: Prolonged at approximately 120-130 ms
+
+- QT interval: Difficult to measure accurately due to atrial fibrillation, but appears prolonged
+
+- QTc: Cannot be accurately calculated due to irregular rhythm
+
+- Cardiac axis: Left axis deviation
+
+** Waveform Analysis**
+
+- P waves: Absent, replaced by fibrillatory waves typical of atrial fibrillation
+
+- QRS complexes: Widened with a qR pattern in lead I and aVL, and an rS pattern in leads V1-V3
+
+- ST segments: ST depression visible in lateral leads (I, aVL, V5-V6)
+
+- T waves: T wave inversion in lateral leads (I, aVL, V5-V6)
+
+**Specific Findings**
+
+1. Atrial fibrillation with rapid ventricular response
+
+2. Left bundle branch block (LBBB)
+
+3. Left ventricular hypertrophy (LVH) - likely due to aortic stenosis
+
+4. ST-T wave changes consistent with LVH strain pattern
+
+5. Possible left atrial enlargement (difficult to assess due to atrial fibrillation)
+
+**Interpretation**
+
+This ECG shows atrial fibrillation with a rapid ventricular response in an 83-year-old man with known aortic stenosis. There is evidence of left bundle branch block, which can mask other ECG changes. The presence of left ventricular hypertrophy is consistent with the patient's history of aortic stenosis. The ST-T wave changes in the lateral leads are consistent with a strain pattern often seen in LVH. 
+
+The combination of atrial fibrillation, LBBB, and LVH suggests significant cardiac remodeling and increased risk for adverse cardiac events. The rapid ventricular rate in the setting of atrial fibrillation and aortic stenosis may lead to hemodynamic compromise.
     `
   },
   'ECG 3': {
     image: '/images/ecg3.jpeg',
     interpretation: `
-      Left Bundle Branch Block (LBBB)
       
-      The ECG shows a sinus rhythm with a rate of 78 beats per minute. The PR interval is slightly prolonged at 220ms. The QRS complexes are widened, measuring 140ms, which is consistent with a left bundle branch block (LBBB).
-      
-      Characteristic features of LBBB are present:
-      - QS or rS complex in V1
-      - Broad, notched R waves in leads I, aVL, V5, and V6
-      - Absent Q waves in leads I, V5, and V6
-      - ST segment and T wave discordant to the QRS complex
-      
-      Due to the presence of LBBB, assessment for myocardial ischemia is limited. Clinical correlation and comparison with previous ECGs is strongly recommended. Further cardiac evaluation may be necessary.
+
+**Patient Information**
+A 79-year-old man presenting with 5 hours of chest pain.
+
+**Technical Quality**
+The ECG quality appears adequate for interpretation. All 12 leads are visible, and there are no significant artifacts that would interfere with analysis.
+
+**Heart Rate and Rhythm**
+The heart rate is approximately 75 beats per minute, calculated using the R-R interval method. The rhythm is regular and appears to be sinus rhythm, as evidenced by the presence of P waves before each QRS complex.
+
+**Intervals and Axes**
+- PR interval: Normal, approximately 160-180 ms
+- QRS duration: Normal, approximately 80-100 ms
+- QT interval: Normal, approximately 360-400 ms
+- Cardiac axis: Normal, between 0 and +90 degrees
+
+**Waveform Analysis**
+- P waves: Normal morphology and duration
+- QRS complexes: Normal duration and morphology in most leads, with significant Q waves in leads II, III, and aVF
+- ST segments: Significant ST-segment elevation in leads II, III, and aVF; reciprocal ST depression in leads I and aVL
+- T waves: T wave inversion in leads II, III, and aVF
+
+**Specific Findings**
+1. ST-segment elevation in leads II, III, and aVF, consistent with acute inferior myocardial infarction
+2. Reciprocal ST depression in leads I and aVL
+3. Pathological Q waves in leads II, III, and aVF, suggesting evolving inferior myocardial infarction
+4. No signs of right ventricular involvement (no ST elevation in V1)
+5. No signs of posterior involvement (no prominent R waves in V1-V2)
+
+**Interpretation**
+This ECG is consistent with an acute ST-elevation myocardial infarction (STEMI) in the inferior wall. The presence of pathological Q waves suggests that the infarction is evolving and may have been ongoing for several hours, which aligns with the patient's reported 5 hours of chest pain. The lack of ST elevation in V1 suggests that right ventricular involvement is less likely, but cannot be completely ruled out without right-sided leads.
     `
   }
 };
@@ -64,6 +158,7 @@ const MedicalAppInterface: React.FC = () => {
   const [selectedECG, setSelectedECG] = useState<string>('ECG 1');
   const [isChatOpen, setIsChatOpen] = useState<boolean>(true);
   const [isUploadOpen, setIsUploadOpen] = useState<boolean>(false);
+  const [patientInfo, setPatientInfo] = useState('');
 
   const ECGCard: React.FC<{ ecg: string }> = ({ ecg }) => (
     <Card 
@@ -117,7 +212,7 @@ const MedicalAppInterface: React.FC = () => {
             </CardHeader>
             <CardContent className="p-4 flex-1 overflow-hidden flex flex-col">
               <ScrollArea className="flex-1 mb-4">
-                <div className="whitespace-pre-wrap">{ecgInterpretations[selectedECG].interpretation}</div>
+              <ReactMarkdown>{ecgInterpretations[selectedECG].interpretation}</ReactMarkdown>
               </ScrollArea>
               <Button className="w-full mt-auto">Generate Report</Button>
             </CardContent>
@@ -186,6 +281,13 @@ const MedicalAppInterface: React.FC = () => {
               </Button>
             </DialogClose>
           </DialogHeader>
+          <div className="flex flex-col gap-4 p-4">
+            <Input
+              placeholder="Enter patient information (e.g., age, symptoms)"
+              value={patientInfo}
+              onChange={(e) => setPatientInfo(e.target.value)}
+            />
+            </div>
           <div className="flex flex-col items-center justify-center h-32 border-2 border-dashed rounded-md">
             <Button variant="outline" className="mb-2">
               <Upload className="mr-2 h-4 w-4" /> Choose File
